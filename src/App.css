@@ -3,6 +3,10 @@
   padding: 2rem;
 }
 
+div.ui.text.container {
+  margin: 5rem auto;
+}
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -1,21 +1,25 @@
-import React from 'react';
-import Header from './Header'
-import Article from './Article'
+import React from 'react'
 import { Container } from 'semantic-ui-react'
 import './App.css'
+import HeaderComponent from './Header'
+import newsArticles from './database'
+import ArticleContainer from './ArticleContainer'
 
 
-function App() {
-  return (
-    <Container text>
-    <div className="App">
-          <Header />
-          <Article headline="Article One" />
-          <Article headline="Article Two" />
-          <Article headline="Article Three" />
-    </div>
-    </Container>
-  );
+class App extends React.Component {
+
+  state = {
+    articles: newsArticles
+  }
+  
+  render() {
+    return (
+      <Container text>
+        <HeaderComponent />
+          <ArticleContainer articles={this.state.articles} />
+      </Container>
+    );
+  }
 }
-
+  
 export default App;

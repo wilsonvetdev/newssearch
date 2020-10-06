@@ -10,10 +10,6 @@ class Article extends React.Component {
     //event listeners should be defined in the same component as its being passed in
     //-your event listeners inside class componenets should be arrow functions
 
-    state = {
-        likes: 0
-    }
-
     handleClick = () => {
         // let partialStateObj = {likes: this.state.likes +1}
         // this.setState(partialStateObj) -- this is merging and creating a new object with updated state
@@ -22,22 +18,20 @@ class Article extends React.Component {
 
         // this.setState({oldStateObj}, () => { return what to do after the state has changed })
         this.setState((prevState) => ({ likes: prevState.likes + 1 }))
+        // async nature allows for all actions to be performed and then re-render
     }
 
     render() {
-        console.log('STATE', this.state)
         return (
-            <Item.Group>
-                <Item>
-                    <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png'  />
+            <Item>
+                <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png'  />
 
-                    <Item.Content>
-                        <Item.Header> News Headline: {this.props.headline} </Item.Header>
-                        <Item.Description> News snippet here </Item.Description>
-                    </Item.Content>
-                    <Button secondary onClick={this.handleClick}>click for likes: {this.state.likes}</Button>
-                </Item>
-            </Item.Group>
+                <Item.Content>
+                    <Item.Header> News Headline: {this.props.article.title} </Item.Header>
+                    <Item.Description> News snippet here </Item.Description>
+                </Item.Content>
+                <Button secondary onClick={this.handleClick}>click for likes: {this.props.article.likes}</Button>
+            </Item>
         )
     }
 
