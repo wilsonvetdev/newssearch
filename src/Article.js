@@ -8,19 +8,13 @@ import { Button, Item } from 'semantic-ui-react'
 class Article extends React.Component {
 
     //event listeners should be defined in the same component as its being passed in
-    //-your event listeners inside class componenets should be arrow functions
-
-    handleClick = () => {
-        // let partialStateObj = {likes: this.state.likes +1}
-        // this.setState(partialStateObj) -- this is merging and creating a new object with updated state
-        
-        // setState triggers re-rendering, it looks to state and see the object now has changed when clicked.
-
-        // this.setState({oldStateObj}, () => { return what to do after the state has changed })
-        this.setState((prevState) => ({ likes: prevState.likes + 1 }))
-        // async nature allows for all actions to be performed and then re-render
+    //-your event listeners inside class components should be arrow functions
+    //-so they automatically bind to instances of the class.
+    
+    handleClick = (articleId, delta) => {
+        this.props.changeLikesFromState(this.props.article.id, +1)
     }
-
+    
     render() {
         return (
             <Item>

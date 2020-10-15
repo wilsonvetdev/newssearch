@@ -7,8 +7,14 @@ import { Item } from 'semantic-ui-react'
 function ArticleContainer(props) {
 
     let arrayOfComponents = props.articles.map((singularArticleObj) => {
-        return <Article key={singularArticleObj.title} article={singularArticleObj} />
+        return <Article 
+            key={singularArticleObj.title} 
+            article={singularArticleObj} 
+            changeLikesFromState={props.changeLikesFromState}
+            />
     })
+
+ 
 
     return (
         <Item.Group>
